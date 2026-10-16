@@ -1,0 +1,57 @@
+@host = http://localhost:5073
+
+### 1. Получить все фильмы
+GET {{host}}/api/v1/movies
+Accept: application/json
+
+### 2. Фильтр по жанру
+GET {{host}}/api/v1/movies?genre=Drama
+Accept: application/json
+
+### 3. Фильтр по минимальному году
+GET {{host}}/api/v1/movies?minYear=2000
+Accept: application/json
+
+### 4. Оба фильтра одновременно
+GET {{host}}/api/v1/movies?genre=Drama&minYear=2000
+Accept: application/json
+
+### 5. Получить фильм по Id
+GET {{host}}/api/v1/movies/1
+Accept: application/json
+
+### 6. Добавить фильм
+POST {{host}}/api/v1/movies
+Content-Type: application/json
+
+{
+  "title": "Test Movie",
+  "genre": "Drama",
+  "durationMinutes": 120,
+  "releaseYear": 2024,
+  "isAvailable": true
+}
+
+### 7. Полностью изменить фильм
+PUT {{host}}/api/v1/movies/1
+Content-Type: application/json
+
+{
+  "title": "Updated Movie",
+  "genre": "Sci-Fi",
+  "durationMinutes": 135,
+  "releaseYear": 2025,
+  "isAvailable": true
+}
+
+### 8. Частично изменить фильм
+PATCH {{host}}/api/v1/movies/1
+Content-Type: application/json
+
+{
+  "isAvailable": false,
+  "genre": "Thriller"
+}
+
+### 9. Удалить фильм
+DELETE {{host}}/api/v1/movies/1
